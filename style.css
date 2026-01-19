@@ -1,78 +1,87 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Roboto:wght@400;700&display=swap');
 
 :root {
-    --bg-gradient-start: #667eea;
-    --bg-gradient-end: #764ba2;
-    --container-bg: rgba(255, 255, 255, 0.1);
-    --container-border: rgba(255, 255, 255, 0.2);
-    --text-color: #ffffff;
+    --bg-color: #f4f7f6;
+    --text-color: #333;
+    --quote-text-color: #fff;
     --author-color: #e0e0e0;
-    --shadow-color: rgba(0, 0, 0, 0.2);
-}
+    --container-bg: #ffffff;
+    --quote-container-bg: rgba(0, 0, 0, 0.3);
+    --container-border: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --link-color: #007bff;
+    --date-color: #6c757d;
+    --h1-color: #111;
+    --hr-color: #ddd;
 
-.dark-mode {
-    --bg-gradient-start: #232526;
-    --bg-gradient-end: #414345;
-    --container-bg: rgba(0, 0, 0, 0.2);
-    --container-border: rgba(255, 255, 255, 0.1);
-    --text-color: #f0f0f0;
-    --author-color: #cccccc;
-    --shadow-color: rgba(0, 0, 0, 0.4);
+    /* Dark Mode Variables */
+    --dark-bg-color: #1a1a1a;
+    --dark-text-color: #e0e0e0;
+    --dark-quote-text-color: #f0f0f0;
+    --dark-author-color: #ccc;
+    --dark-container-bg: #2c2c2c;
+    --dark-quote-container-bg: rgba(0, 0, 0, 0.5);
+    --dark-container-border: #444;
+    --dark-shadow-color: rgba(0, 0, 0, 0.5);
+    --dark-link-color: #80bfff;
+    --dark-date-color: #a0a0a0;
+    --dark-h1-color: #f5f5f5;
+    --dark-hr-color: #555;
 }
 
 body {
-    font-family: 'Nanum Myeongjo', serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     margin: 0;
     padding: 20px;
-    box-sizing: border-box;
-    transition: background 0.5s ease;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: var(--dark-bg-color);
+    color: var(--dark-text-color);
 }
 
 #theme-toggle {
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 20px;
     padding: 10px 15px;
     background-color: var(--container-bg);
     color: var(--text-color);
     border: 1px solid var(--container-border);
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
-    font-family: sans-serif;
-    font-size: 0.9em;
-    backdrop-filter: blur(10px);
-    z-index: 10;
+    z-index: 1000;
 }
 
+body.dark-mode #theme-toggle {
+    background-color: var(--dark-container-bg);
+    color: var(--dark-text-color);
+    border-color: var(--dark-container-border);
+}
+
+/* Quote Styles */
 #quote-container {
     text-align: center;
     max-width: 800px;
+    margin: 60px auto 20px;
     padding: 50px;
-    background-color: var(--container-bg);
+    background-color: var(--quote-container-bg);
     border-radius: 20px;
-    box-shadow: 0 15px 30px var(--shadow-color);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--container-border);
-    animation: containerFadeIn 1s ease-in-out;
+    box-shadow: 0 10px 25px var(--shadow-color);
+    backdrop-filter: blur(8px);
+    color: var(--quote-text-color);
+    background-image: linear-gradient(135deg, #667eea, #764ba2);
     transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
 
-@keyframes containerFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+body.dark-mode #quote-container {
+    background-color: var(--dark-quote-container-bg);
+    color: var(--dark-quote-text-color);
+    background-image: linear-gradient(135deg, #232526, #414345);
 }
 
 .fade-in-out {
@@ -80,29 +89,109 @@ body {
 }
 
 @keyframes textFadeInOut {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 #quote {
-    font-size: 2.5em;
-    margin-bottom: 25px;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 2em;
+    margin-bottom: 20px;
     line-height: 1.5;
-    color: var(--text-color);
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
-    transition: color 0.5s ease;
 }
 
 #author {
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-style: italic;
     color: var(--author-color);
-    transition: color 0.5s ease;
+}
+
+body.dark-mode #author {
+    color: var(--dark-author-color);
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: var(--hr-color);
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+body.dark-mode hr {
+    background: var(--dark-hr-color);
+}
+
+/* News Feed Styles */
+#news-container {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+#news-container h1 {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--h1-color);
+}
+
+body.dark-mode #news-container h1 {
+    color: var(--dark-h1-color);
+}
+
+.news-item {
+    background-color: var(--container-bg);
+    border: 1px solid var(--container-border);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+body.dark-mode .news-item {
+    background-color: var(--dark-container-bg);
+    border-color: var(--dark-container-border);
+}
+
+.news-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+
+.news-item h2 a {
+    font-weight: 700;
+    font-size: 1.4em;
+    text-decoration: none;
+    color: var(--link-color);
+}
+
+body.dark-mode .news-item h2 a {
+    color: var(--dark-link-color);
+}
+
+.news-item .pub-date {
+    font-size: 0.9em;
+    color: var(--date-color);
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+body.dark-mode .news-item .pub-date {
+    color: var(--dark-date-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body { padding: 15px; }
+    #quote-container { margin-top: 70px; padding: 30px; }
+    #quote { font-size: 1.5em; }
+    #author { font-size: 1em; }
+    #news-container h1 { font-size: 2em; }
+    .news-item { padding: 20px; }
+    .news-item h2 a { font-size: 1.2em; }
 }
