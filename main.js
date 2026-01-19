@@ -18,9 +18,8 @@ function showQuote() {
     }, 500); // Half of the animation duration
 }
 
-// Function to fetch and display news
 async function getNews() {
-    const RSS_URL = `https://www.mk.co.kr/rss/30000001/`;
+    const RSS_URL = `http://en.yna.co.kr/RSS/news.xml`;
     // Use a proxy to avoid CORS issues
     const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}`;
 
@@ -33,13 +32,12 @@ async function getNews() {
 
         if (data.status === 'ok') {
             const items = data.items;
-            let html = '<h1>Maeil Business News</h1>';
+            let html = '<h1>Yonhap News</h1>';
             items.forEach(item => {
                 html += `
                     <div class="news-item">
                         <h2><a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a></h2>
                         <p class="pub-date">${new Date(item.pubDate).toLocaleString()}</p>
-                        <p>${item.description}</p>
                     </div>
                 `;
             });
@@ -58,6 +56,7 @@ themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     if (document.body.classList.contains('dark-mode')) {
         localStorage.setItem('theme', 'dark-mode');
+
     } else {
         localStorage.removeItem('theme');
     }
