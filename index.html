@@ -4,18 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>명언과 뉴스</title>
+    <title>뉴스 피드</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="theme-toggle">다크 모드 전환</button>
-    <div id="quote-container">
+    <div id="quote-bar">
         <p id="quote"></p>
         <p id="author"></p>
     </div>
-    <hr>
-    <div id="news-container">
-        <h1>연합뉴스TV</h1>
+    <button id="theme-toggle">다크 모드 전환</button>
+    <div id="feeds-container">
+        <div id="feed-1" class="feed-column"></div>
+        <div id="feed-2" class="feed-column"></div>
+        <div id="feed-3" class="feed-column"></div>
     </div>
     <script src="quotes.js"></script>
     <script src="main.js"></script>
