@@ -19,35 +19,35 @@ function showQuote() {
 }
 
 async function getNews() {
-    const RSS_URL = `http://en.yna.co.kr/RSS/news.xml`;
+    const RSS_URL = `https://www.mbn.co.kr/rss/`;
     // Use a proxy to avoid CORS issues
     const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}`;
 
     try {
         const response = await fetch(API_URL);
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('네트워크 응답이 올바르지 않습니다');
         }
         const data = await response.json();
 
         if (data.status === 'ok') {
             const items = data.items;
-            let html = '<h1>Yonhap News</h1>';
+            let html = '<h1>매일경제 뉴스</h1>';
             items.forEach(item => {
                 html += `
                     <div class="news-item">
-                        <h2><a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a></h2>
-                        <p class="pub-date">${new Date(item.pubDate).toLocaleString()}</p>
+                        <h4><a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a></h4>
+                        <p class="pub-date">${new Date(item.pubDate).toLocaleString('ko-KR')}</p>
                     </div>
                 `;
             });
             newsContainer.innerHTML = html;
         } else {
-            throw new Error('Failed to fetch RSS feed');
+            throw new Error('RSS 피드를 가져오는데 실패했습니다');
         }
     } catch (error) {
-        console.error('Error fetching news:', error);
-        newsContainer.innerHTML = '<p>Failed to load news feed. Please try again later.</p>';
+        console.error('뉴스 가져오기 오류:', error);
+        newsContainer.innerHTML = '<p>뉴스 피드를 불러오는데 실패했습니다. 나중에 다시 시도해주세요.</p>';
     }
 }
 
