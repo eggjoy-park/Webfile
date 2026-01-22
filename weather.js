@@ -52,7 +52,7 @@ function displayWeather(data) {
     weatherContainer.innerHTML = html;
 }
 
-function getWeatherIcon(code) M {
+function getWeatherIcon(code) {
     if (code >= 0 && code <= 1) return '☀️'; // Clear sky, mainly clear
     if (code >= 2 && code <= 3) return '⛅️'; // Partly cloudy, overcast
     if (code >= 45 && code <= 48) return '🌫️'; // Fog
