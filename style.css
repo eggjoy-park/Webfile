@@ -99,6 +99,59 @@ body.dark-mode #theme-toggle {
     border-color: var(--dark-border-color);
 }
 
+/* Weather Forecast */
+#weather-forecast {
+    max-width: 1300px;
+    margin: 30px auto;
+    padding: 20px;
+    background: var(--container-bg);
+    border-radius: 12px;
+}
+
+body.dark-mode #weather-forecast {
+    background: var(--dark-container-bg);
+}
+
+#weather-forecast h2 {
+    text-align: center;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 1.6em;
+    color: var(--h1-color);
+    margin-bottom: 20px;
+}
+
+.weather-days {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.weather-day {
+    padding: 10px;
+}
+
+.day-name {
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+.weather-icon {
+    font-size: 2em;
+    margin: 10px 0;
+}
+
+.temps {
+    font-size: 1em;
+}
+
+.max-temp {
+    font-weight: 700;
+}
+
+.min-temp {
+    color: var(--date-color);
+}
+
 /* Feeds Container */
 #feeds-container {
     display: grid;
@@ -177,6 +230,12 @@ body.dark-mode .news-item-simple:hover {
     #feeds-container {
         grid-template-columns: repeat(2, 1fr);
     }
+    .weather-days {
+        flex-wrap: wrap;
+    }
+    .weather-day {
+        width: 33%;
+    }
 }
 
 @media (max-width: 768px) {
@@ -188,5 +247,8 @@ body.dark-mode .news-item-simple:hover {
     }
     #theme-toggle {
         top: 90px;
+    }
+    .weather-day {
+        width: 48%;
     }
 }
