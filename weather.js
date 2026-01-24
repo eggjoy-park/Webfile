@@ -1,4 +1,5 @@
 
+
 document.addEventListener('DOMContentLoaded', () => {
     fetchWeather();
 });
@@ -21,6 +22,7 @@ async function fetchWeather() {
 }
 
 function displayWeather(data) {
+    
     const weatherContainer = document.getElementById('weather-forecast');
     if (!data.daily) {
         weatherContainer.innerHTML = '<p>날씨 정보를 찾을 수 없습니다.</p>';

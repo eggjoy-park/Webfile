@@ -36,7 +36,7 @@ body {
 body.dark-mode {
     background-color: var(--dark-bg-color);
     color: var(--dark-text-color);
-    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E');
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 #quote-bar {
@@ -275,44 +275,33 @@ body.dark-mode .news-item-simple:hover {
     #theme-toggle {
         top: 90px;
     }
+
+    /* Updated Weather Forecast styles for mobile */
     #weather-forecast {
-        padding: 20px 15px;
+        padding: 20px 0;
     }
     .weather-days {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
         gap: 15px;
+        padding: 0 20px;
+        -webkit-overflow-scrolling: touch;
     }
+    .weather-days::-webkit-scrollbar {
+        display: none;
+    }
+    .weather-days {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
     .weather-day {
-        padding: 15px 10px;
-        min-width: 110px;
+        flex: 0 0 auto;
+        padding: 15px;
+        min-width: 120px;
     }
     .weather-icon {
         font-size: 2.5em;
-    }
-}
-
-@media (max-width: 480px) {
-    .weather-days {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    }
-    .weather-days::-webkit-scrollbar { 
-        display: none;  /* Safari and Chrome */
-    }
-    .weather-day {
-        flex: 0 0 auto;
-        width: 100px;
-        padding: 10px 5px;
-    }
-    .day-name {
-        font-size: 1em;
-    }
-    .weather-icon {
-        font-size: 2em;
-    }
-    .temps {
-        font-size: 0.9em;
     }
 }
