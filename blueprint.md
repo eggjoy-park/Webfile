@@ -11,6 +11,8 @@ A simple web application that displays a rotating quote, weekly weather forecast
 *   **News Feeds:** Displays the latest news articles from three different sources in a full-width list format.
 *   **Data Source:** Fetches data from the respective RSS feeds using the `rss2json` API and weather data from the Open-Meteo API.
 *   **Styling:** Includes a dark mode toggle and responsive design.
+*   **Stock Market Status:** Displays real-time data for major stock indices, including price, change, and percentage change.
+
 
 ## Current Task: Implement Horizontal Scrolling for Mobile Weather
 

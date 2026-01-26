@@ -295,3 +295,90 @@ body.dark-mode .news-item-simple:hover {
         flex-basis: calc(100% - 10px);
     }
 }
+
+/* Stock Market Styles */
+#stock-market {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+#stock-market h2 {
+    text-align: center;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 1.8em;
+    color: var(--h1-color);
+    margin-bottom: 25px;
+}
+
+body.dark-mode #stock-market h2 {
+    color: var(--dark-h1-color);
+}
+
+.stock-indices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.stock-index {
+    background-color: var(--container-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1 1 250px;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .stock-index {
+    background-color: var(--dark-container-bg);
+    border-color: var(--dark-border-color);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.stock-index:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+body.dark-mode .stock-index:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.stock-name {
+    font-weight: 700;
+    font-size: 1.1em;
+    margin: 0 0 10px 0;
+}
+
+.stock-price {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}
+
+.stock-change {
+    font-size: 1.1em;
+}
+
+.stock-change.up {
+    color: #28a745;
+}
+
+.stock-change.down {
+    color: #dc3545;
+}
+
+@media (max-width: 768px) {
+    #stock-market {
+        padding: 20px 10px;
+    }
+    .stock-indices {
+        flex-direction: column;
+        align-items: center;
+    }
+}
