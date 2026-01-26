@@ -40,7 +40,7 @@ function displayWeather(data) {
 
         html += `
             <div class="weather-day">
-                <p class="day-name">${dayName} ${date}</p>
+                <p class="day-name">${dayName}<br>${date}</p>
                 <p class="weather-icon">${getWeatherIcon(weatherCode)}</p>
                 <p class="temps">
                     <span class="max-temp">${Math.round(maxTemp)}°</span>
