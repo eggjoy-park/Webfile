@@ -1,5 +1,4 @@
 
-
 document.addEventListener('DOMContentLoaded', () => {
     fetchWeather();
 });
@@ -34,13 +33,14 @@ function displayWeather(data) {
     for (let i = 0; i < 7; i++) {
         const day = new Date(data.daily.time[i]);
         const dayName = day.toLocaleDateString('ko-KR', { weekday: 'short' });
+        const date = day.toLocaleDateString('ko-KR', { month: 'numeric', day: 'numeric' });
         const maxTemp = data.daily.temperature_2m_max[i];
         const minTemp = data.daily.temperature_2m_min[i];
         const weatherCode = data.daily.weathercode[i];
 
         html += `
             <div class="weather-day">
-                <p class="day-name">${dayName}</p>
+                <p class="day-name">${dayName} ${date}</p>
                 <p class="weather-icon">${getWeatherIcon(weatherCode)}</p>
                 <p class="temps">
                     <span class="max-temp">${Math.round(maxTemp)}°</span>
