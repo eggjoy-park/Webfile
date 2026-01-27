@@ -1,307 +1,47 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Roboto:wght@400;700&display=swap');
-
-:root {
-    --bg-color: #f4f7f6;
-    --text-color: #333;
-    --container-bg: #ffffff;
-    --border-color: #d1d1d1;
-    --link-color: #007bff;
-    --date-color: #6c757d;
-    --h1-color: #111;
-    --quote-bar-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --quote-text-color: #ffffff;
-
-    /* Dark Mode Variables */
-    --dark-bg-color: #1a1a1a;
-    --dark-text-color: #e0e0e0;
-    --dark-container-bg: #2c2c2c;
-    --dark-border-color: #444;
-    --dark-link-color: #80bfff;
-    --dark-date-color: #a0a0a0;
-    --dark-h1-color: #f5f5f5;
-    --dark-quote-bar-bg: linear-gradient(135deg, #232526 0%, #414345 100%);
-}
-
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    font-family: sans-serif;
     margin: 0;
-    padding-top: 60px; 
-    transition: background-color 0.3s, color 0.3s;
-    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
-}
-
-body.dark-mode {
-    background-color: var(--dark-bg-color);
-    color: var(--dark-text-color);
-    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
-}
-
-#quote-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: var(--quote-bar-bg);
-    color: var(--quote-text-color);
-    text-align: center;
-    padding: 12px 0;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-    z-index: 1000;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Nanum Myeongjo', serif;
-    transition: opacity 0.5s ease-in-out;
-}
-
-#quote-bar.fade-in { opacity: 1; }
-#quote-bar.fade-out { opacity: 0; }
-
-#quote-bar::before, #quote-bar::after {
-    font-size: 1.2em;
-    opacity: 0.8;
-    margin: 0 15px;
-}
-#quote-bar::before { content: '\275D'; }
-#quote-bar::after { content: '\275E'; }
-
-#quote-bar p {
-    margin: 0 8px;
-    font-size: 1.1em;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-
-#author {
-    font-style: italic;
-    opacity: 0.9;
-}
-
-#theme-toggle {
-    position: fixed;
-    top: 80px;
-    right: 20px;
-    padding: 10px 15px;
-    background-color: var(--container-bg);
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-body.dark-mode #theme-toggle {
-    background-color: var(--dark-container-bg);
-    color: var(--dark-text-color);
-    border-color: var(--dark-border-color);
-}
-
-/* Weather Forecast */
-#weather-forecast {
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 15px 0;
-}
-
-#weather-forecast h2 {
-    text-align: center;
-    font-family: 'Nanum Myeongjo', serif;
-    font-size: 1.8em;
-    color: var(--h1-color);
-    margin-bottom: 20px;
-}
-
-body.dark-mode #weather-forecast h2 {
-    color: var(--dark-h1-color);
-}
-
-.weather-days {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5px;
-    padding: 0 10px;
-    text-align: center;
-}
-
-.weather-day {
-    background-color: var(--container-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    padding: 5px;
-    flex: 1 1 90px;
-    max-width: 110px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-body.dark-mode .weather-day {
-    background-color: var(--dark-container-bg);
-    border-color: var(--dark-border-color);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-}
-
-.weather-day:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-body.dark-mode .weather-day:hover {
-    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-}
-
-.day-name {
-    font-weight: 700;
-    font-size: 0.9em;
-    margin-bottom: 5px;
-}
-
-.weather-icon {
-    font-size: 1.8em;
-    margin: 5px 0 8px;
-}
-
-.temps {
-    font-size: 0.85em;
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-}
-
-.max-temp {
-    font-weight: 700;
-    font-size: 1em;
-}
-
-.min-temp {
-    color: var(--date-color);
-    font-size: 1em;
-}
-
-body.dark-mode .min-temp {
-    color: var(--dark-date-color);
-}
-
-/* Feeds Container */
-#feeds-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    max-width: 1300px;
-    margin: 30px auto;
-    padding: 0 30px;
-}
-
-.feed-column h1 {
-    font-family: 'Nanum Myeongjo', serif;
-    font-size: 1.8em;
-    text-align: center;
-    margin-bottom: 25px;
-    color: var(--h1-color);
-    border-bottom: 2px solid var(--link-color);
-    padding-bottom: 10px;
-}
-
-body.dark-mode .feed-column h1 {
-    color: var(--dark-h1-color);
-    border-bottom-color: var(--dark-link-color);
-}
-
-/* Simple News List Styles */
-.news-list-simple {
-    display: flex;
-    flex-direction: column;
-}
-
-.news-item-simple {
-    text-decoration: none;
-    color: inherit;
-    padding: 12px 10px;
-    border-bottom: 1px solid var(--border-color);
-    transition: background-color 0.2s;
-    display: block;
-}
-
-body.dark-mode .news-item-simple {
-    border-bottom-color: var(--dark-border-color);
-}
-
-.news-item-simple:first-child {
-    border-top: 1px solid var(--border-color);
-}
-
-body.dark-mode .news-item-simple:first-child {
-    border-top-color: var(--dark-border-color);
-}
-
-.news-item-simple:hover {
-    background-color: rgba(0,0,0,0.03);
-}
-
-body.dark-mode .news-item-simple:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-.news-item-simple h4 {
-    font-weight: 400;
-    font-size: 1em;
-    margin: 0 0 5px 0;
-    line-height: 1.4;
-}
-
-.news-item-simple .pub-date {
-    font-size: 0.8em;
-    color: var(--date-color);
-    margin: 0;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-    #feeds-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    body { padding-top: 80px; }
-    #feeds-container {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        padding: 0 20px;
-    }
-    #theme-toggle {
-        top: 90px;
-    }
-
-    #weather-forecast {
-        padding: 20px 0;
-    }
-    
-    .weather-days {
-        padding: 0 10px;
-    }
-    
-    .weather-day {
-        flex-basis: calc(50% - 10px);
-        max-width: none;
-    }
-}
-
-@media (max-width: 480px) {
-    .weather-day {
-        flex-basis: calc(100% - 10px);
-    }
+    background-color: #f0f0f0;
 }
 
 #scene-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
     width: 100%;
     height: 150px;
-    z-index: 10;
-    pointer-events: none;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.container {
+    max-width: 800px;
+    margin: 180px auto 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.quotes-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fafafa;
+    border-left: 5px solid #007bff;
+    font-style: italic;
+}
+
+#quote {
+    font-size: 1.1em;
+}
+
+#author {
+    text-align: right;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
 }
