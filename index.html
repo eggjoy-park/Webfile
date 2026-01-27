@@ -19,8 +19,17 @@
         <div id="feed-2" class="feed-column"></div>
         <div id="feed-3" class="feed-column"></div>
     </div>
+    <div id="scene-container"></div>
     <script src="quotes.js"></script>
     <script src="weather.js"></script>
     <script src="main.js"></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.138.0/build/three.module.js"
+            }
+        }
+    </script>
+    <script type="module" src="scene.js"></script>
 </body>
 </html>
